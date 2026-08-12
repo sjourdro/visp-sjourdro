@@ -25,9 +25,9 @@ Note that all the material (source code and images) described in this tutorial i
 Create and display an image
 ============================
 
-ViSP `gui module <https://visp.inria.fr/gui>`_ provides Graphical User Interfaces capabilities that allows to display an `ImageGray <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageGray.html#visp.core.ImageGray>`_ in a window. To this end you may use several optional third-party libraries which are: `X11, GDI, OpenCV, GTK, Direct3D <https://visp.inria.fr/3rdparty_gui/>`_. We recommend to use X11 on unix-like systems thanks to `DisplayX <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.gui.DisplayX.html#visp.gui.DisplayX>`_ class and GDI on Windows thanks to `vpDisplayGDI <null>`_. If none of these classes are available, you may use vpDisplayOpenCV instead.
+ViSP `gui module <https://visp.inria.fr/gui>`_ provides Graphical User Interfaces capabilities that allows to display an `ImageGray <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageGray.html#visp.core.ImageGray>`_ in a window. To this end you may use several optional third-party libraries which are: `X11, GDI, OpenCV, GTK, Direct3D <https://visp.inria.fr/3rdparty_gui/>`_. We recommend to use X11 on unix-like systems thanks to `DisplayX <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.gui.DisplayX.html#visp.gui.DisplayX>`_ class and GDI on Windows thanks to `vpDisplayGDI <null>`_. If none of these classes are available, you may use `DisplayOpenCV <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.gui.DisplayOpenCV.html>`_ instead.
 
-The following example also available in tutorial-image-display.cpp shows how to create a gray level 3840x2160 image with all the pixels set to 128, and display a red circle with 200 pixel radius in the middle of the image.
+The following example also available in `tutorial-image-display.cpp <null>`_ shows how to create a gray level 3840x2160 image with all the pixels set to 128, and display a red circle with 200 pixel radius in the middle of the image.
 
 
 
@@ -51,15 +51,31 @@ https://visp-doc.inria.fr/doxygen/visp-3.7.0/img-tutorial-display.png
 Display an image larger than screen resolution
 ===============================================
 
-.. note::
-	Missing feature :
-	VISP_DEFAULT_DISPLAY_PREFERENCE : incomplete
-
 Manual down scaling factor
 --------------------------
 
+This other example available in `tutorial-image-display-scaled-manu.py </examples/image/tutorial-image-display-scaled-manu.py>`_ shows how to modify the previous example in order to introduce a down scaling factor to reduce the size of the display by 5 along the lines and the columns. This feature may be useful to display images that are larger than the screen resolution.
+
+To down scale the display size, just modify the previous example using the `Display.ScaleType <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.ScaleType>`_ parameter to the `setDownScalingFactor() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.setDownScalingFactor>`_ method.
+
+.. code::
+	:language: python
+
+	d.setDownScalingFactor(Display.SCALE_5)
+	d.init(I)
+
 Auto down scaling factor
 -----------------------------
+
+This other example available in `tutorial-image-display-scaled-auto.py </examples/image/tutorial-image-display-scaled-auto.py>`_ shows now how to modify the previous example in order to introduce an auto down scaling factor that is automatically computed from the screen resolution in order that two images could be displayed given the screen resolution.
+
+To consider an auto down scaling factor, modify the previous example adding the `Display.SCALE_AUTO <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.ScaleType>`_ parameter to the `setDownScalingFactor() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.setDownScalingFactor>`_ method.
+
+.. code::
+	:language: python
+
+	d.setDownScalingFactor(Display.SCALE_AUTO)
+	d.init(I)
 
 Next tutorial
 ===============
