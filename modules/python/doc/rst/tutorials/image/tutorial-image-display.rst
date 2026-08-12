@@ -29,30 +29,6 @@ ViSP `gui module <https://visp.inria.fr/gui>`_ provides Graphical User Interface
 
 The following example also available in tutorial-image-display.cpp shows how to create a gray level 3840x2160 image with all the pixels set to 128, and display a red circle with 200 pixel radius in the middle of the image.
 
-.. code::
-
-	import sys
-
-	from visp.core import ImageGray
-	from visp.core import Display
-	from visp.python.display_utils import get_display
-
-	from visp.core import ImageCircle
-	from visp.core import ImagePoint
-	from visp.core import Color
-
-	#I = ImageGray(2160, 3840, 128)
-	I = ImageGray(800, 800, 128)
-
-	d = get_display()
-	d.init(I)
-
-	Display.display(I)
-	Display.displayCircleStatic(I, ImageCircle(ImagePoint(I.getHeight()/2, I.getHeight()/2), 200), Color.red, True)
-	Display.flush(I)
-	print("A click to quit...")
-	d.getClick(I)
-
 
 
 .. literalinclude:: /examples/image/tutorial-image-display.py
