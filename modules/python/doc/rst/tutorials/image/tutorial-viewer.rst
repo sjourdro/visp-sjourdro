@@ -145,12 +145,21 @@ Here ``Hello world`` is displayed in the middle of the image.
 Export and save the content of a window as an image
 ===================================================
 
+As given in `tutorial-export-image.py <none>`_ which source code is given below, we use `Display.getImage() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.getImage>`_ function to export the image with the whole drawings in overlay. Then we use `ImageIo.write() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.io.ImageIo.html#visp.io.ImageIo.write>`_ to save the image in png format.
+
+.. literalinclude:: /examples/image/tutorial-export-image.py
+	:language: python
+
 
 Handle keyboard events in a window
 ==================================
 
+As given in `tutorial-event-keyboard.py <none>`_ which code is given below, we use `Display.getKeyboardEvent() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.getKeyboardEvent>`_ function to get the value of the key pressed.
+
+.. literalinclude:: /examples/image/tutorial-event-keyboard.py
+	:language: python
 
 Next tutorial
 =================
 
-You are now ready to see how to continue with Tutorial: How to modify an image to insert basic drawings. 
+You are now ready to see how to continue with `Tutorial: How to modify an image to insert basic drawings <https://visp-doc.inria.fr/doxygen/visp-daily/tutorial-basic-drawings.html>`_. 
