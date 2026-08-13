@@ -17,7 +17,7 @@ d.init(I)
 
 # Drawing a red circle on the image
 Display.display(I)
-Display.displayCircleStatic(I, ImageCircle(ImagePoint(I.getHeight()/2, I.getHeight()/2), 200), Color.red, True)
+Display.displayCircleStatic(I, ImageCircle(ImagePoint(I.getHeight()/2, I.getWidth()/2), 200), Color.red, True)
 Display.flush(I)
 
 # Waiting for user input
