@@ -2,10 +2,6 @@
 Tutorial: How to display an image and basic drawings in a window 
 ================================================================
 
-.. sectnum::
-
-.. contents:: Table of Contents
-
 Introduction
 ==============
 
@@ -32,17 +28,18 @@ The following example also available in `tutorial-image-display.cpp <null>`_ sho
 
 
 .. literalinclude:: /examples/image/tutorial-image-display.py
+	:language: python
+	:linenos:
+	:lines: 3-
 
-  :language: python
 
 
 
 Depending on your screen resolution you may just see a part of the image, and certainly not the full red circle. Next image shows an example of this behavior when screen resolution is less than image size: 
 
-https://visp-doc.inria.fr/doxygen/visp-3.7.0/img-tutorial-display.png
-
 .. image:: https://visp-doc.inria.fr/doxygen/visp-3.7.0/img-tutorial-display.png
-    :alt: Image
+	:alt: image
+	:align: center
 
 .. note::
 
@@ -58,8 +55,7 @@ This other example available in `tutorial-image-display-scaled-manu.py </example
 
 To down scale the display size, just modify the previous example using the `Display.ScaleType <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.ScaleType>`_ parameter to the `setDownScalingFactor() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.setDownScalingFactor>`_ method.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	d.setDownScalingFactor(Display.SCALE_5)
 	d.init(I)
@@ -71,9 +67,8 @@ This other example available in `tutorial-image-display-scaled-auto.py </example
 
 To consider an auto down scaling factor, modify the previous example adding the `Display.SCALE_AUTO <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.ScaleType>`_ parameter to the `setDownScalingFactor() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display.setDownScalingFactor>`_ method.
 
-.. code::
-	:language: python
-
+.. code-block:: python
+	
 	d.setDownScalingFactor(Display.SCALE_AUTO)
 	d.init(I)
 

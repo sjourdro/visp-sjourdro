@@ -2,10 +2,6 @@
 Tutorial: How to modify an image to insert basic drawings
 ==========================================================
 
-.. sectnum::
-
-.. contents:: Table of Contents
-
 Introduction
 ============
 
@@ -22,8 +18,7 @@ There is the `ImageDraw <https://visp-doc.inria.fr/doxygen/visp-python-daily/_au
 
 If you run the corresponding binary: 
 
-.. code::
-	:language: bash
+.. code-block:: bash
 
 	$ cd $VISP_WS/visp-build/modules/core
 	$ ./testImageDraw
@@ -35,11 +30,13 @@ it will create ``canvas_color.png`` and ``canvas_gray.png`` images that give a g
 
 .. image:: https://visp-doc.inria.fr/doxygen/visp-daily/img-tutorial-drawings-color.png
     :alt: Image
+	:align: center
 
 * Content of ``canvas_gray.png`` image that shows basic drawings inserted in a gray level image implemented as a `ImageGray <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageGray.html#visp.core.ImageGray>`_ is the following: 
 
 .. image:: https://visp-doc.inria.fr/doxygen/visp-daily/img-tutorial-drawings-gray.png
     :alt: Image
+	:align: center
 
 Draw a point in an image
 -----------------------------
@@ -47,8 +44,7 @@ Draw a point in an image
 The following snippet shows how to modify color image I drawing a red point at pixel location (100, 200).
 
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip = ImagePoint(100, 200)
@@ -56,8 +52,7 @@ The following snippet shows how to modify color image I drawing a red point at p
 
 The following snippet shows how to modify a gray level image I drawing a white point at pixel location (100, 200).
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip = ImagePoint(100, 200)
@@ -69,8 +64,7 @@ Draw a line
 
 The following snippet shows how to modify color image I drawing an orange line with thickness 3 between pixels with coordinates (100, 200) and (300, 400).
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip1 = ImagePoint(100, 200)
@@ -79,8 +73,7 @@ The following snippet shows how to modify color image I drawing an orange line w
 
 The following snippet shows how to modify gray level image I drawing a black line with thickness 3 between pixels with coordinates (100, 200) and (300, 400).
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip1 = ImagePoint(100, 200)
@@ -93,8 +86,7 @@ Draw a circle
 
 The following snippet shows how to modify color image I drawing a green cercle with thickness 3, centered at pixel location (100, 200) and with radius 80 pixels.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip = ImagePoint(100, 200)
@@ -102,8 +94,7 @@ The following snippet shows how to modify color image I drawing a green cercle w
 
 The following snippet shows how to modify gray level image I drawing a gray cercle with thickness 3, centered at pixel location (100, 200) and with radius 80 pixels.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip = ImagePoint(100, 200)
@@ -115,8 +106,7 @@ Draw a rectangle
 
 The following snippet shows how to modify color image I drawing a yellow rectangle with thickness 3, with top left corner location (100, 200), and rectangle width and height set to 150, 80 respectively.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip = ImagePoint(100, 200)
@@ -126,8 +116,7 @@ The following snippet shows how to modify color image I drawing a yellow rectang
 
 The following snippet shows how to modify gray level image I drawing a light gray rectangle with thickness 3, with top left corner location (100, 200), and rectangle width and height set to 150, 80 respectively.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip = ImagePoint(100, 200)
@@ -141,8 +130,7 @@ Draw a cross
 
 The following snippet shows how to modify color image I drawing a blue cross with thickness 3, location (100, 200), and size 15 pixels.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip = ImagePoint(100, 200)
@@ -150,8 +138,7 @@ The following snippet shows how to modify color image I drawing a blue cross wit
 
 The following snippet shows how to modify gray level image I drawing a dark gray cross with thickness 3, location (100, 200), and size 15 pixels.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip = ImagePoint(100, 200)
@@ -164,8 +151,7 @@ Insert text in an image
 The following snippet shows how to modify color image I drawing "Hello world" in white over a black background at location (100, 200).
 
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageRGBa(480, 640)
 	ip = ImagePoint(100, 200)
@@ -175,8 +161,7 @@ The following snippet shows how to modify color image I drawing "Hello world" in
 The following snippet shows how to modify gray level image I drawing "Hello world" in white over a black background at location (100, 200).
 
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 	ip = ImagePoint(100, 200)

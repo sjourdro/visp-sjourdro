@@ -2,10 +2,6 @@
 Tutorial: Planar image projection
 =================================
 
-.. sectnum::
-
-.. contents:: Table of Contents
-
 Introduction
 ==============
 
@@ -33,6 +29,8 @@ This is done by the following code also available in `tutorial-image-simulator.c
 
 .. literalinclude:: /examples/simulator/tutorial-image-simulator.py
 	:language: python
+	:linenos:
+	:lines: 3-
 
 
 The result of this program is shown in the next image.
@@ -48,8 +46,7 @@ Resulting projection of the planar image at a given camera position.
 
 The provide hereafter the explanation of the new lines that were introduced.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	from visp.robot import ImageSimulator
 
@@ -57,16 +54,14 @@ Include the header of the `ImageSimulator <https://visp-doc.inria.fr/doxygen/vis
 
 Then in the main() function we create an instance of a gray level image that corresponds to the image of the planar target, and then we read the image from the disk.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	target = ImageGray()
 	ImageIo.read(target, "target_square.jpg")
 
 Since the previous image corresponds to a 20cm by 20cm target, we initialize the 3D coordinates of each corner in the plane Z=0. Each
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	p1 = Point(-0.1, -0.1, 0.0) # Top left
 	p2 = Point(0.1, -0.1, 0.0) # Top right
@@ -76,51 +71,49 @@ Since the previous image corresponds to a 20cm by 20cm target, we initialize the
 
 Then we create an instance of the image ``I`` that will contain the rendered image from a given camera position.
 
-
-.. code::
-	:language: python
+.. code-block:: python
 
 	I = ImageGray(480, 640)
 
 Since the projection depends on the camera, we set its intrinsic parameters.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	cam = CameraParameters(840, 840, I.getWidth() / 2, I.getHeight() / 2)
 
 We also set the render position of the camera as an homogeneous transformation between the camera frame and the target frame.
 
-.. code::
-	:language: python
+
+.. code-block:: python
 
 	cMo = HomogeneousMatrix(0.0, 0.0, 0.35, 0.0, math.radians(30.0), math.radians(15.0))
 
 We create here an instance of the planar image projector, set the interpolation to bilinear and initialize the projector with the image of the target and the coordinates of its corners.
 
-.. code::
-	:language: python
+
+.. code-block:: python
 
 	sim = ImageSimulator()
-        sim.setInterpolationType(ImageSimulator.BILINEAR_INTERPOLATION)
-        sim.init(target, X)
+    sim.setInterpolationType(ImageSimulator.BILINEAR_INTERPOLATION)
+    sim.init(target, X)
 
 Now to retrieve the rendered image we first clean the content of the image to render, set the camera position, and finally get the image using the camera parameters.
 
-.. code::
-	:language: python
+.. code-block:: python
 
 	sim.setCleanPreviousImage(True)
-        sim.setCameraPosition(cMo)
-        sim.getImage(I, cam)
+    sim.setCameraPosition(cMo)
+    sim.getImage(I, cam)
 
 Then, if ``libjpeg`` is available, the rendered image is saved in the same directory then the executable.
 
+.. code-block:: python
+
     try {
-      vpImageIo::write(I, "./rendered_image.jpg");
+    	vpImageIo::write(I, "./rendered_image.jpg");
     }
     catch (...) {
-      std::cout << "Unsupported image format" << std::endl;
+    	std::cout << "Unsupported image format" << std::endl;
     }
 
 Finally, as in `Tutorial: How to create and build a project that uses ViSP and CMake on Unix or Windows <https://visp-doc.inria.fr/doxygen/visp-daily/tutorial-getting-started.html>`_ we open a window to display the rendered image.
