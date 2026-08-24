@@ -3,6 +3,15 @@
 Examples
 ====================
 
+Image manipulation
+-----------------------
+
+.. toctree::
+    :glob:
+    :maxdepth: 1
+
+    image/*
+
 
 Robot interface
 -----------------------
