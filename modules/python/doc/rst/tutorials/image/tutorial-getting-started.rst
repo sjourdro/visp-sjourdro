@@ -9,7 +9,7 @@ Introduction
 
 .. warning::
 
-	This tutorial is still in drafting phase and may contain errors.
+	This tutorial is still in redaction phase and may contain errors.
 
 .. note::
 
@@ -37,36 +37,55 @@ We will show here how to create a grayscale image using the `ImageGray <https://
 
 	All image classes (including `ImageGray <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageGray.html#visp.core.ImageGray>`_ and `ImageRGBa <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageRGBa.html#visp.core.ImageRGBa>`_) are bindings from the generic C++ class `vpImage\<Type\> <https://visp-doc.inria.fr/doxygen/visp-daily/classvpImage.html>`_, with "Type" the type of the image's pixels, and therefore share the same methods and operators.
 
-
-
-
 Grayscale image
 ---------------
 
-To create an empty grayscale image, you can call the class constructor :
+To create an empty grayscale image, you first need to import the `ImageGray <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageGray.html#visp.core.ImageGray>`_ class :
+
+.. code-block:: python
+
+	from visp.core import ImageGray
+
+You can create an empty image by calling the class constructor without arguments :
 
 .. code-block:: python
 
 	I_gray = ImageGray()
 
-You can specify the image dimensions, as well as a default pixel value, using the corresponding arguments.
-Here is the creation of a square image with a length of 800 pixels, with a pixel value of 125, wich correspond to gray:
+You can also specify the image height, width, and initial pixel value.
+
+The following example creates an 800 × 800 grayscale image in which
+every pixel is initialized to 125 :
 
 .. code-block:: python
 
 	I_gray = ImageGray(800, 800, 125)
 
+.. note::
+
+	The datatype used in ImageGray to represent any pixel value is an integer, thus ranging from 0 (black) to 255 (white).
+
 RGBa image
 ----------
 
-You can create a RGBa image the same way as a grayscale image :
+You can create a RGBa image the same way as a grayscale image.
+
+First import the `ImageRGBa <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageRGBa.html#visp.core.ImageRGBa>`_ class :
+
+.. code-block:: python
+
+	from visp.core import ImageRGBa
+
+You can create an empty image by calling the class constructor without arguments :
 
 .. code-block:: python
 
 	I_rgba = ImageRGBa()
 
 To assign it a pixel value, you will need to use the `Color <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Color.html#visp.core.Color>`_ class.
-It contains various default color to use. For example, here is the creation of a red image :
+It contains various default color to use.
+
+The following example creates an 800 × 800 red image :
 
 .. code-block:: python
 
@@ -74,12 +93,9 @@ It contains various default color to use. For example, here is the creation of a
 
 You can also set your own color by entering its RGBa (Red, Green, Blue, alpha = opacity) values :
 
-
 .. code-block:: python
 
 	I_rgba = ImageRGBa(800, 800, Color(255, 0, 0, 255, Color.ColorIdentifier.id_red))
-
-
 
 Display an image
 ================
@@ -90,12 +106,21 @@ This is why we will see both options in this tutorial.
 Using ViSP
 ----------
 
-.. note::
+.. attention::
 
-	h
+	Only ImageGray and ImageRGBa can be displayed using ViSP. If you want to display another type of image (for exemple ImageDouble), you will first need to convert it into an ImageGray using the `ImageConvert <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.ImageConvert.html#visp.core.ImageConvert>`_ class.
 
 The `Display <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.core.Display.html#visp.core.Display>`_ class can be used to display an image in a window.
-You will first need to create a Display object using the `get_display() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.display_utils.get_display.html#visp.display_utils.get_display>`_ method from the visp.core.display_utils module, and initialize it with the image :
+You will also need to use the `get_display() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.display_utils.get_display.html#visp.display_utils.get_display>`_ method from the ``visp.display.display_utils`` module to detect your GUI (see `GUI module overview <https://visp.inria.fr/gui/>`_).
+
+First import them together with :
+
+.. code-block:: python
+
+	from visp.core import Display
+	from visp.python.display_utils import get_display
+
+Then create a Display object using get_display() and initialize it with the image :
 
 .. code-block:: python
 
@@ -122,13 +147,13 @@ Using Matplotlib
 
 	To use this option, you need to have installed NumPy and Matplotlib modules in your Python environment.
 
-ViSP images can be converted into a NumPy array using the numpy() method of ViSP image classes :
+ViSP images can be converted into a NumPy ndarray using the numpy() method of ViSP image classes :
 
 .. code-block:: python
 
 	I_numpy = I_visp.numpy()
 
-The newly created NumPy array can then be displayed in a Matplotlib plot :
+The newly created NumPy ndarray can then be displayed in a Matplotlib plot :
 
 .. code-block:: python
 
@@ -139,14 +164,14 @@ The newly created NumPy array can then be displayed in a Matplotlib plot :
 
 	In case of a grayscale image, you will need to use the "cmap='gray', vmin=0, vmax=255" arguments in the plt.imshow() method for it to be displayed properly.
 
-The following exemple creates both an ImageGray and an ImageRGBa objects, and displays the two of them first in separate figures then in the same figure :
+The following example creates both an ImageGray and an ImageRGBa objects, and displays the two of them first in separate figures then in the same figure :
 
-.. literalinclude:: /examples/tutorial/image/tutorial-image-display-visp.py
+.. literalinclude:: /examples/tutorial/image/tutorial-image-display-matplotlib.py
 	:language: python
 	:linenos:
 
 .. hint::
-	You can also initialize a ViSP image with a NumPy image.
+	You can also initialize a ViSP image with a NumPy ndarray.
 
 I/O operations
 ==============
@@ -157,7 +182,14 @@ It can interact with .pgm, .ppm, .jpeg, .png, .tiff, .bmp, .ras and .jp2 files.
 Read an image
 -------------
 
-To read an image, use the `read() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.io.ImageIo.html#visp.io.ImageIo.read>`_ method while specifying the file path :
+To read an image, first import the ImageIo class :
+
+
+.. code-block:: python
+
+	from visp.io import ImageIo
+
+And use the `read() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.io.ImageIo.html#visp.io.ImageIo.read>`_ method while specifying the file path :
 
 .. code-block:: python
 
@@ -166,13 +198,20 @@ To read an image, use the `read() <https://visp-doc.inria.fr/doxygen/visp-python
 Write an image
 --------------
 
-To write an image, use the `write() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.io.ImageIo.html#visp.io.ImageIo.write>`_ method while specifying the file path :
+To write an image, first import the ImageIo class :
+
+
+.. code-block:: python
+
+	from visp.io import ImageIo
+
+And use the `write() <https://visp-doc.inria.fr/doxygen/visp-python-daily/_autosummary/visp.io.ImageIo.html#visp.io.ImageIo.write>`_ method while specifying the file path :
 
 .. code-block:: python
 
 	ImageIo.write(I, path)
 
-The following exemple opens the file ``monkey.jpeg``, display it, and save it under a different name :
+The following example opens the file ``monkey.jpeg``, display it, and save it under a different name :
 
 .. literalinclude:: /examples/tutorial/image/tutorial-image-io.py
 	:language: python
